@@ -1,6 +1,6 @@
 console.log("welcome to node.js");
 const os = require('os');
-const {readFile,unlink} = require('fs');
+const {readFile,unlink,readFileSync} = require('fs');
 
 const readFileResult = readFile("./block-BNaaaj/index.md",(err,res)=> {
     console.log(res);
@@ -26,5 +26,12 @@ console.log(buff.toString());
 
 //blocking code
 console.log(buff);
+
+const sync = readFileSync("./app.js");
+console.log(sync," :sync");
+
 //non-blocking code
+readFile("./app.js",(err,res)=> {
+    console.log(err,res);
+})
 setTimeout(()=> console.log(buff),1000);
